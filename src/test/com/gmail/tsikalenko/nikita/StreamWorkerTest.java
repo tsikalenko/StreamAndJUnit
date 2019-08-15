@@ -3,6 +3,7 @@ package com.gmail.tsikalenko.nikita;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -87,6 +88,20 @@ public class StreamWorkerTest {
 
         List<Integer> expected = Arrays.asList(newArr);
         List<Integer> actual = sw.multipleAllElements(arr, 2).boxed().collect(Collectors.toList());
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void separete(){
+        List<Integer> expected = Arrays.asList(1, 2, 0, 4, 5);
+        List<Integer> actual = sw.sparate(Arrays.asList("1, 2, 0", "4, 5"));
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void fromListToFormString(){
+        String expected = "1. Ivan, 3. Peter";
+        String actual = sw.fromListToFormString(Arrays.asList("Ivan", "Nikita", "Peter"));
         Assert.assertEquals(expected, actual);
     }
 }
